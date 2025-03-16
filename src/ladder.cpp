@@ -7,9 +7,9 @@ void error(string word1, string word2, string msg){
 
 
 bool edit_distance_within(const string& word1, const string& word2, int d){
-    if (abs((int)word1.size() - (int)word2.size()) > d)
+    if (abs((int)word1.size()- (int)word2.size()) > d)
         return false;
-    if (word1.size() == word2.size()) {
+    if(word1.size() == word2.size()) {
         int diffCount = 0;
         for (size_t i = 0; i < word1.size(); i++) {
             if (word1[i] != word2[i]) {
@@ -20,18 +20,20 @@ bool edit_distance_within(const string& word1, const string& word2, int d){
         }
         return diffCount <= d;
     }
-    const std::string& shorter = (word1.size() < word2.size()) ? word1 : word2;
-    const std::string& longer  = (word1.size() < word2.size()) ? word2 : word1;
-    int i = 0, j = 0;
-    bool foundDifference = false;
+    const string& shorter = (word1.size() < word2.size()) ? word1 : word2;
+    const sstring& longer  = (word1.size() < word2.size()) ? word2 : word1;
+    int i = 0;
+    int j = 0;
+    bool foundDifference = 0;
     
     while (i < shorter.size() && j < longer.size()) {
         if (shorter[i] == longer[j]) {
             i++;
             j++;
         } else {
-            if (foundDifference)
+            if (foundDifference){
                 return false;
+            }
             foundDifference = true;
             j++;
         }
@@ -59,7 +61,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         vector<string> front_ladder = word_ladder.front();
         word_ladder.pop();
         string last_word = front_ladder.back();
-        for (const string& word: word_list ){
+        for(const string& word: word_list ){
             if (is_adjacent(last_word, word)){
                 if(visited.find(word) == visited.end()){
                     visited.insert(word);
