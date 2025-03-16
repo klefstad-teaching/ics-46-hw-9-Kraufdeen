@@ -21,7 +21,7 @@ bool edit_distance_within(const string& word1, const string& word2, int d){
         return diffCount <= d;
     }
     const string& shorter = (word1.size() < word2.size()) ? word1 : word2;
-    const sstring& longer  = (word1.size() < word2.size()) ? word2 : word1;
+    const string& longer  = (word1.size() < word2.size()) ? word2 : word1;
     int i = 0;
     int j = 0;
     bool foundDifference = 0;
