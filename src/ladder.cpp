@@ -65,7 +65,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
                     visited.insert(word);
                     vector<string>temp_ladder(front_ladder);
                     temp_ladder.push_back(word);
-                    if(word == last_word){
+                    if(word == end_word){
                         return temp_ladder;
                     }
                     word_ladder.push(temp_ladder);
@@ -98,7 +98,6 @@ void print_word_ladder(const vector<string>& ladder){
 void verify_word_ladder() {
     set<string> word_list;
     load_words(word_list, "src/words.txt");
-    cout << "word";
     my_assert(generate_word_ladder("cat", "dog", word_list).size() == 4);
     my_assert(generate_word_ladder("marty", "curls", word_list).size() == 6);
     my_assert(generate_word_ladder("code", "data", word_list).size() == 6);
