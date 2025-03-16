@@ -41,8 +41,6 @@ bool edit_distance_within(const string& word1, const string& word2, int d){
 
 
 bool is_adjacent(const string& word1, const string& word2) {
-    if (word1 == word2)
-        return 0;
     return edit_distance_within(word1, word2, 1);
 }
 
